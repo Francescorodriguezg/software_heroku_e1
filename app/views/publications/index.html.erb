@@ -1,9 +1,11 @@
 <h1>Show publications</h1>
 
-<%= link_to 'create publication', new_publication_path %><br>
+
+
 
 <!--Si el user es administrador-->
 <%if user_admin%>
+<%= link_to 'create publication', new_publication_path %><br>
 <%else%>
 <%end%>
 
@@ -14,9 +16,19 @@
 
 <% @publications.each do |publication| %>
   <div>
-    <%= publication.id %>
+    <h3>Publication</h3>
+    <h5>ID: <%= publication.id %></h5>
+    <h5>ID: <%= publication.club_name %></h5>
+    <h5>Admin_id: <%= publication.user_id %></h5>
     <!--Mandar mensaje-->
-    <%=link_to 'separate', separate_field_path(publication)%>
+    <% if user_admin == false && user_moderator == false %>
+      <%= link_to 'reserve', new_message_path(:moderator => publication.user_id) %>
+    <%end%>
+    
+
+
+    
+    
   </div>
 <% end %>
 

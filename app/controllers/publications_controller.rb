@@ -15,8 +15,22 @@ class PublicationsController < ApplicationController
   def create
     @publication = Publication.new(publications_params)
     @publication.user_id = current_user.id
-    byebug
     if @publication.save
+      # Asignamoms moderador a todos
+      @user_moderator_id = rand(User.where(moderator: true).all.count)
+      @user_moderator_id = 2
+      #@user = User.where(admin: true).offset(@user_moderator_id - 1).first
+      User.where(moderator: true).all(1)
+      @publication.moderator_id = @user_moderator_id
+      #user1, user2, user3, user4, user5
+      #user1.admin
+      #user2.moderator
+      #user3.user
+      #user4.user
+      #user5.moderator
+      # def create
+      # admin(params(user_id, cancha, direccion...))
+      # save @pubalication.moderator_id = 
       @publication.user = User.first
       redirect_to root_path
     else
@@ -24,21 +38,8 @@ class PublicationsController < ApplicationController
     end
   end
 
-  def new_request
-  end
-
-  def create_request
-    @request = Request.new(request_params)
-    @request.moderator_id = params[:id]
-    @request.user_id = current_user.id
-    @request.save
-  end
-
   private
     def publications_params
       params.require(:publication).permit(:club_name, :club_address, :sport_name)
-    end
-    def request_params
-      params.require(:request).permit(:status, :moderador_id, :user_id, :message)
     end
 end

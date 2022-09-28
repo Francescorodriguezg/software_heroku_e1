@@ -1,0 +1,2 @@
+class Pivot < ApplicationRecord
+end

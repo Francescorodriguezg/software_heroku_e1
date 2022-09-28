@@ -1,0 +1,2 @@
+class PivotsController < ApplicationController
+end
