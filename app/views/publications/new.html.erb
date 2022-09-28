@@ -1,2 +1,24 @@
-<h1>Publications#new</h1>
-<p>Find me in app/views/publications/new.html.erb</p>
+<h1>Create Publication</h1>
+
+<%= form_with scope: :publication, url: create_publication_path, local: false do |f| %>
+
+    <div>
+      <%= f.label :club_name %>
+      <%= f.text_field :club_name %>
+    </div>
+
+    <div>
+      <%= f.label :club_address %>
+      <%= f.text_field :club_address %>
+    </div>
+
+    <div>
+      <%= f.label :sport_name %>
+      <%= f.text_field :sport_name %>
+    </div>
+
+    <div>
+      <%= f.submit %>
+    </div>
+
+<% end %>
