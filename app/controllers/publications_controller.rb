@@ -24,8 +24,21 @@ class PublicationsController < ApplicationController
     end
   end
 
+  def new_request
+  end
+
+  def create_request
+    @request = Request.new(request_params)
+    @request.moderator_id = params[:id]
+    @request.user_id = current_user.id
+    @request.save
+  end
+
   private
     def publications_params
       params.require(:publication).permit(:club_name, :club_address, :sport_name)
+    end
+    def request_params
+      params.require(:request).permit(:status, :moderador_id, :user_id, :message)
     end
 end

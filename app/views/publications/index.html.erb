@@ -1,3 +1,22 @@
 <h1>Show publications</h1>
 
-<%= link_to 'create publication', new_publication_path %>
+<%= link_to 'create publication', new_publication_path %><br>
+
+<!--Si el user es administrador-->
+<%if user_admin%>
+<%else%>
+<%end%>
+
+<!--Si el user es moderador-->
+<%if user_moderator%>
+<%else%>
+<%end%>
+
+<% @publications.each do |publication| %>
+  <div>
+    <%= publication.id %>
+    <!--Mandar mensaje-->
+    <%=link_to 'separate', separate_field_path(publication)%>
+  </div>
+<% end %>
+
