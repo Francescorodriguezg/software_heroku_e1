@@ -19,13 +19,14 @@ class PivotsController < ApplicationController
 
   # GET /pivots/1/edit
   def edit
+    
   end
 
   # POST /pivots or /pivots.json
   def create
     @user_moderator_id = rand(User.where(moderator: true).all.count)
     @pivot = Pivot.new(pivot_params)
-    @pivot.date_time = Time.now
+    
     @pivot.user_id = current_user.id
     @pivot.moderador_id = User.where(moderator: true).offset(@user_moderator_id).first.id
     
@@ -44,7 +45,7 @@ class PivotsController < ApplicationController
   def update
     respond_to do |format|
       if @pivot.update(pivot_params)
-        format.html { redirect_to pivot_url(@pivot), notice: "Pivot was successfully updated." }
+        format.html { redirect_to pivots_path, notice: "Pivot was successfully updated." }
         format.json { render :show, status: :ok, location: @pivot }
       else
         format.html { render :edit, status: :unprocessable_entity }

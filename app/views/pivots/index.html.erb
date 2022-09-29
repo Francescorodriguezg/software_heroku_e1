@@ -16,14 +16,10 @@
       <h5>Dirección: <%= pivot.club_address%></h5>
       <h5>Deporte: <%= pivot.sport_name%></h5>
       <h5>Status de reserva: <%= pivot.status%></h5>
-      <!-- Answer this client -->
+      <%= link_to 'Editar Status', edit_pivot_path(pivot)%>
       <%= link_to 'Enviar Mensaje', new_response_path(:user_id => pivot.user_id, :user_moderator => pivot.moderador_id)  %>
-
-      <!-- <tr>
-        <td><%= link_to 'Show', pivot %></td>
-        <td><%= link_to 'Denied', edit_pivot_path(pivot) %></td>
-        <td><%= link_to 'Destroy', pivot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr> -->
+      
+     
     <% end %>
   </tbody>
 </table>
