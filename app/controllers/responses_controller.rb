@@ -46,15 +46,11 @@ class ResponsesController < ApplicationController
 
 
 
-    respond_to do |format|
+    
       if @response.save
-        format.html { redirect_to response_url(@response), notice: "Response was successfully created." }
-        format.json { render :show, status: :created, location: @response }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @response.errors, status: :unprocessable_entity }
+        redirect_to responses_path
       end
-    end
+    
   end
 
   # PATCH/PUT /responses/1 or /responses/1.json

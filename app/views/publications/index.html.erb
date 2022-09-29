@@ -1,6 +1,5 @@
-<h1>Show publications</h1>
+<h1>Publicaciones</h1>
 
-<%= link_to 'Messages', responses_path%>
 
 <!--Si el user es administrador-->
 <%if user_admin%>
@@ -8,22 +7,31 @@
 <%else%>
 <%end%>
 
-<!--Si el user es moderador-->
-<%if user_moderator%>
-<%else%>
-<%end%>
+<table align='center'>
+  <tr>
+    <thead>
+      <th>ID de publicacion</th>
+      <th>Nombre del club</th>
+      <th>Direccion del club</th>
+      <th>Deporte</th>
+      </thead>
+  </tr>
+    
+
 
 <% @publications.each do |publication| %>
   <div>
-    <h3 style="color: red;">Publication</h3>
-    <h5>ID de publicacion: <%= publication.id %></h5>
+  <tr>
+  <td><%= publication.id %></td>
+  <td><%= publication.club_name %></td>
+  <td><%= publication.club_address %></td>
+  <td><%= publication.sport_name %></td>
+  <% if user_admin == false && user_moderator == false%>
+    <td><%= link_to 'reservar', new_pivot_path %></td>
+  <%end%>
+  
+  </tr>
     
-    <h5>Nombre del club: <%= publication.club_name %></h5>
-    <h5>Direccion del club: <%= publication.club_address %></h5>
-    <h5>Deporte: <%= publication.sport_name %></h5>
-    <% if user_admin == false && user_moderator == false%>
-      <%= link_to 'reservar', new_pivot_path %>
-    <%end%>
 
   </div>
 <% end %>
