@@ -3,10 +3,12 @@ class ResponsesController < ApplicationController
 
   # GET /responses or /responses.json
   def index      
+    
     if current_user.moderator
-      @responses = Response.where(user_id: current_user.id).all
+      @responses = Response.all
+
     else
-      @responses = Response.where(user_id: current_user.id).all
+      @responses = Response.all
     end
   end
 
@@ -17,8 +19,10 @@ class ResponsesController < ApplicationController
   # GET /responses/new
   def new
     @response = Response.new
-    @response_hello = params[:hello_world]
-    session[:passed_variable] = @response_hello
+    
+    session[:user_id] = params[:user_id]
+    session[:user_moderator] = params[:user_moderator]
+    
   end
 
   # GET /responses/1/edit
@@ -28,8 +32,20 @@ class ResponsesController < ApplicationController
   # POST /responses or /responses.json
   def create
     @response = Response.new(response_params)
-    @response.user_id = session[:passed_variable]
-    @response.user_moderator = current_user.id
+    @response.user_id = session[:user_id]
+    @response.user_moderator = session[:user_moderator]
+    if current_user.moderator == true
+      
+      @response.message_for = @response.user_id
+    end
+    if not current_user.moderator == true
+      
+      @response.message_for = @response.user_moderator
+    end
+    
+
+
+
     respond_to do |format|
       if @response.save
         format.html { redirect_to response_url(@response), notice: "Response was successfully created." }

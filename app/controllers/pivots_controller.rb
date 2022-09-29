@@ -28,7 +28,7 @@ class PivotsController < ApplicationController
     @pivot.date_time = Time.now
     @pivot.user_id = current_user.id
     @pivot.moderador_id = User.where(moderator: true).offset(@user_moderator_id).first.id
-    byebug
+    
     respond_to do |format|
       if @pivot.save
         format.html { redirect_to pivot_url(@pivot), notice: "Pivot was successfully created." }

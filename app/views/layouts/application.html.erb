@@ -30,7 +30,10 @@
       <%= link_to 'Sign up', new_user_registration_path%>
     <%end%>
     <%if user_moderator %>
-      <%=link_to 'request', pivots_path%>
+      <%=link_to 'Reservas por moderar', pivots_path%>
+    <%end%>
+    <%if user_moderator == false && user_admin == false %>
+      <%=link_to 'Mis reservas', pivots_path%>
     <%end%>
     <%= yield %>
   </body>

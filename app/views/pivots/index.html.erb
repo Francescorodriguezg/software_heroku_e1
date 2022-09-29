@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pivots</h1>
+<h1>Reservas</h1>
 
 <table>
   <thead>
@@ -11,10 +11,13 @@
 
   <tbody>
     <% @pivots.each do |pivot| %>
-      <h5>request from: <%= pivot.user.email%></h5>
-      <h5>request status: <%= pivot.status%></h5>
+      <h5>Reserva hecha por: <%= pivot.user.email%></h5>
+      <h5>Club: <%= pivot.club_name%></h5>
+      <h5>Dirección: <%= pivot.club_address%></h5>
+      <h5>Deporte: <%= pivot.sport_name%></h5>
+      <h5>Status de reserva: <%= pivot.status%></h5>
       <!-- Answer this client -->
-      <%= link_to 'Enviar Mensaje', new_response_path(:hello_world => pivot.user.id)  %>
+      <%= link_to 'Enviar Mensaje', new_response_path(:user_id => pivot.user_id, :user_moderator => pivot.moderador_id)  %>
 
       <!-- <tr>
         <td><%= link_to 'Show', pivot %></td>

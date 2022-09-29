@@ -16,13 +16,13 @@
 <% @publications.each do |publication| %>
   <div>
     <h3 style="color: red;">Publication</h3>
-    <h5>ID: <%= publication.id %></h5>
-    <h5>user_id: <%= publication.user_id %></h5>
-    <h5>club_name: <%= publication.club_name %></h5>
-    <h5>club_address: <%= publication.club_address %></h5>
-    <h5>sport_name: <%= publication.sport_name %></h5>
+    <h5>ID de publicacion: <%= publication.id %></h5>
+    
+    <h5>Nombre del club: <%= publication.club_name %></h5>
+    <h5>Direccion del club: <%= publication.club_address %></h5>
+    <h5>Deporte: <%= publication.sport_name %></h5>
     <% if user_admin == false && user_moderator == false%>
-      <%= link_to 'reservar', new_pivot_path(:club_name => @publication.club_name, :club_address => @publication.club_address,:sport_name => @publication.sport_name) %>
+      <%= link_to 'reservar', new_pivot_path %>
     <%end%>
 
   </div>
