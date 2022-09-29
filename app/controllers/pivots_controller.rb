@@ -14,6 +14,7 @@ class PivotsController < ApplicationController
   # GET /pivots/new
   def new
     @pivot = Pivot.new
+    # @exam = Pivot.find(params[:id])
   end
 
   # GET /pivots/1/edit

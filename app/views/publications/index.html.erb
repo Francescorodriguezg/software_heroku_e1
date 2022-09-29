@@ -22,7 +22,7 @@
     <h5>club_address: <%= publication.club_address %></h5>
     <h5>sport_name: <%= publication.sport_name %></h5>
     <% if user_admin == false && user_moderator == false%>
-      <%= link_to 'reservar', new_pivot_path %>
+      <%= link_to 'reservar', new_pivot_path(:club_name => @publication.club_name, :club_address => @publication.club_address,:sport_name => @publication.sport_name) %>
     <%end%>
 
   </div>

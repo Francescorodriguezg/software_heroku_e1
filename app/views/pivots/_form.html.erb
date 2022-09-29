@@ -1,4 +1,4 @@
-<%= form_with(model: pivot) do |form| %>
+<%= form_with scope: :pivot, url: new_pivot_path do |form| %>
   <% if pivot.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(pivot.errors.count, "error") %> prohibited this pivot from being saved:</h2>
@@ -12,27 +12,26 @@
   <% end %>
 
   <div class="actions">
-
   <div>
     <%= form.label :club_name%>
-    <%= form.text_field :club_name%>
+    <%= form.text_field :club_name , :value => params[:club_name]%>
   </div>
 
   <div>
     <%= form.label :sport_name%>
-    <%= form.text_field :sport_name%>
+    <%= form.text_field :sport_name, :value => params[:sport_name]%>
   </div>
 
   <div>
     <%= form.label :club_address%>
-    <%= form.text_field :club_address%>
+    <%= form.text_field :club_address, :value => params[:club_address]%>
   </div>
 
   <%if user_moderator%>
-    <div>
-      <%= form.label :status%>
-      <%= form.select :status, options_for_select([['accepted'], ['denied']], :selected => :status) %>
-    </div>
+  <div>
+    <%= form.label :status%>
+    <%= form.select :status, options_for_select([['accepted'], ['denied']], :selected => :status) %>
+  </div>
   <%end%>
 
 
