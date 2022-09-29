@@ -14,10 +14,7 @@
       <%= f.label :sport_name %>
       <%= f.text_field :sport_name, :value => @pivot.sport_name, :readonly => true %>
     </div>
-    <div>
-      <%= f.label :date_time_DD_3MM_YY_HH_MM %>
-      <%= f.text_field :date_time, :value => @pivot.date_time, :readonly => true %>
-    </div>
+    
     <% if current_user.moderator == true %>
 
     <div>
