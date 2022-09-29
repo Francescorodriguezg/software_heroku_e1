@@ -11,7 +11,7 @@
 
   <tbody>
     <% @responses.each do |response| %>
-      <h5>response from: <%= @hello%></h5>
+      <h5>response from: <%= User.find(response.user_moderator.to_i).email %></h5>
       <h5>message: <%=response.message%></h5>
       <h5>status: <%=response.status%></h5>
       <%if user_moderator%>

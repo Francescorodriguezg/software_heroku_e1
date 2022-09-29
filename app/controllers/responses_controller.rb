@@ -4,12 +4,9 @@ class ResponsesController < ApplicationController
   # GET /responses or /responses.json
   def index      
     if current_user.moderator
-      @responses = Response.where(user_moderator: current_user.id).all
+      @responses = Response.where(user_id: current_user.id).all
     else
-      # @responses = Response.where(user_id: current_user.id)
-      @responses = Response.where(user_moderator: current_user.id).all
-      # byebug
-      # @hello = User.where(id: @responses.user_moderator).email
+      @responses = Response.where(user_id: current_user.id).all
     end
   end
 
