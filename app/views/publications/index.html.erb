@@ -1,7 +1,6 @@
 <h1>Show publications</h1>
 
-
-
+<%= link_to 'Messages', responses_path%>
 
 <!--Si el user es administrador-->
 <%if user_admin%>
@@ -16,19 +15,15 @@
 
 <% @publications.each do |publication| %>
   <div>
-    <h3>Publication</h3>
+    <h3 style="color: red;">Publication</h3>
     <h5>ID: <%= publication.id %></h5>
-    <h5>ID: <%= publication.club_name %></h5>
-    <h5>Admin_id: <%= publication.user_id %></h5>
-    <!--Mandar mensaje-->
-    <% if user_admin == false && user_moderator == false %>
-      <%= link_to 'reserve', new_message_path(:moderator => publication.user_id) %>
+    <h5>user_id: <%= publication.user_id %></h5>
+    <h5>club_name: <%= publication.club_name %></h5>
+    <h5>club_address: <%= publication.club_address %></h5>
+    <h5>sport_name: <%= publication.sport_name %></h5>
+    <% if user_admin == false && user_moderator == false%>
+      <%= link_to 'reservar', new_pivot_path %>
     <%end%>
-    
 
-
-    
-    
   </div>
 <% end %>
-

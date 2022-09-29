@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Responses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @responses.each do |response| %>
+      <h5>response from: <%= @hello%></h5>
+      <h5>message: <%=response.message%></h5>
+      <h5>status: <%=response.status%></h5>
+      <%if user_moderator%>
+        <%= link_to 'Enviar Mensaje a usuario', new_response_path(:hello_world => response.user.id)  %>
+      <%else%>
+        <%= link_to 'Enviar Mensaje a moderador', new_response_path(:hello_world => response.user_moderator)  %>
+      <%end%>
+      
+      
+      <tr>
+        <td><%= link_to 'Show', response %></td>
+        <td><%= link_to 'Edit', edit_response_path(response) %></td>
+        <td><%= link_to 'Destroy', response, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Messages</h1>
+<h1>Requests</h1>
 
 <table>
   <thead>
@@ -11,6 +11,8 @@
 
   <tbody>
     <% @messages.each do |message| %>
+      <h5>From: <%=message.user.email%></h5>
+      <h5>Request: <%=message.id%></h5>
       <tr>
         <td><%= link_to 'Show', message %></td>
         <td><%= link_to 'Edit', edit_message_path(message) %></td>

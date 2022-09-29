@@ -10,24 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_28_172643) do
+ActiveRecord::Schema.define(version: 2022_09_29_023331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "messages", force: :cascade do |t|
     t.string "message"
-    t.boolean "status"
-    t.integer "user_id"
-    t.integer "moderator_id"
+    t.integer "reserva_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "pivots", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "moderator_id"
-    t.integer "message_id"
+    t.string "club_name"
+    t.string "sport_name"
+    t.datetime "date_time"
+    t.integer "moderador_id"
+    t.string "club_address"
+    t.string "status", default: "pending"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -37,6 +39,15 @@ ActiveRecord::Schema.define(version: 2022_09_28_172643) do
     t.string "club_address"
     t.string "sport_name"
     t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "responses", force: :cascade do |t|
+    t.string "message"
+    t.string "status"
+    t.integer "user_id"
+    t.integer "user_moderator"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

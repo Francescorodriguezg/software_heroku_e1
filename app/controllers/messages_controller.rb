@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
 
   # GET /messages or /messages.json
   def index
-    @messages = Message.all
+    @messages = Pivot.where(moderator_id: current_user).all
   end
 
   # GET /messages/1 or /messages/1.json
@@ -22,8 +22,7 @@ class MessagesController < ApplicationController
   # POST /messages or /messages.json
   def create
     @message = Message.new(message_params)
-    @message.user_id = current_user.id
-    # set the moderator_id
+
     respond_to do |format|
       if @message.save
         format.html { redirect_to message_url(@message), notice: "Message was successfully created." }
@@ -51,6 +50,7 @@ class MessagesController < ApplicationController
   # DELETE /messages/1 or /messages/1.json
   def destroy
     @message.destroy
+
     respond_to do |format|
       format.html { redirect_to messages_url, notice: "Message was successfully destroyed." }
       format.json { head :no_content }
@@ -65,6 +65,6 @@ class MessagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def message_params
-      params.require(:message).permit(:message, :status)
+      params.require(:message).permit(:message, :reserva_id)
     end
 end

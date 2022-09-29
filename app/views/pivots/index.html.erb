@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pivots</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pivots.each do |pivot| %>
+      <h5>request from: <%= pivot.user.email%></h5>
+      <h5>request status: <%= pivot.status%></h5>
+      <!-- Answer this client -->
+      <%= link_to 'Enviar Mensaje', new_response_path(:hello_world => pivot.user.id)  %>
+
+      <!-- <tr>
+        <td><%= link_to 'Show', pivot %></td>
+        <td><%= link_to 'Denied', edit_pivot_path(pivot) %></td>
+        <td><%= link_to 'Destroy', pivot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr> -->
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<!-- <%= link_to 'New Pivot', new_pivot_path %> -->

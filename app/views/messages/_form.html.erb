@@ -12,12 +12,8 @@
   <% end %>
 
   <div class="actions">
-  <%= form.label :message %>
-  <%= form.text_area :message %>
-  <%if user_moderator%>
-    <%= form.label :status %>
-    <%= form.text_area :status %>
-  <%end%>
-    <%= form.submit%>
+    <%= form.label :message%><br>
+    <%= form.text_area :message%><br>
+    <%= form.submit %>
   </div>
 <% end %>
