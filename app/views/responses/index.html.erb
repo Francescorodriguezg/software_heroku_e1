@@ -12,10 +12,17 @@
   <tbody>
     <% @responses.each do |response| %>
       <%if current_user.id == response.message_for%>
+      <%if response.user_id == response.message_for%>
+        <h5>De: <%= User.find(response.user_moderator.to_i).email %></h5>
+      <%end%>
+      <%if response.user_moderator == response.message_for%>
       
-      <h5>De: <%= User.find(response.user_moderator.to_i).email %></h5>
+        <h5>De: <%= User.find(response.user_id).email %></h5>
+        
+      <%end%>
+      
       <h5>Mensaje: <%=response.message%></h5>
-      <h5>Status: <%=response.status%></h5>
+      
       
       <%if user_moderator == true%>
         <%= link_to 'Enviar Mensaje a usuario', new_response_path(:user_id => response.user_id, :user_moderator => response.user_moderator)  %>

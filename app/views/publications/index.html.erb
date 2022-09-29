@@ -1,10 +1,11 @@
-<h1>Publicaciones</h1>
+<h1 align = 'center'>Publicaciones</h1>
 
 
 <!--Si el user es administrador-->
 <%if user_admin%>
+<p align = 'center'>
 <%= link_to 'create publication', new_publication_path %><br>
-<%else%>
+</p>
 <%end%>
 
 <table align='center'>

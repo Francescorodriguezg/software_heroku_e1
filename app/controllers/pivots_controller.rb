@@ -32,7 +32,7 @@ class PivotsController < ApplicationController
     
     respond_to do |format|
       if @pivot.save
-        format.html { redirect_to pivot_url(@pivot), notice: "Pivot was successfully created." }
+        format.html { redirect_to pivots_path, notice: "Pivot was successfully created." }
         format.json { render :show, status: :created, location: @pivot }
       else
         format.html { render :new, status: :unprocessable_entity }
