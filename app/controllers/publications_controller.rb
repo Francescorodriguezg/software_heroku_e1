@@ -1,5 +1,4 @@
 class PublicationsController < ApplicationController
-
   def index
     @publications = Publication.all
   end
@@ -23,7 +22,8 @@ class PublicationsController < ApplicationController
   end
 
   private
-    def publications_params
-      params.require(:publication).permit(:club_name, :club_address, :sport_name)
-    end
+
+  def publications_params
+    params.require(:publication).permit(:club_name, :club_address, :sport_name)
+  end
 end

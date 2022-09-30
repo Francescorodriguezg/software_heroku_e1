@@ -15,11 +15,11 @@
     <p class="alert"><%= alert %></p>
     <%if user_signed_in?%>
       <%if current_user.moderator%>
-        You are MODERATOR
+        Tipo: Moderador
         <%elsif  current_user.admin%>
-        You are ADMIN
+        Tipo: Administrador
         <%elsif  current_user%>
-        You are USER
+        Tipo: Usuario
       <%end%>
     <%end%><br>
     <% if user_signed_in? %>

@@ -1,12 +1,9 @@
 module ApplicationHelper
   def user_admin
-    if user_signed_in?
-      return current_user.admin
-    end
+    return current_user.admin if user_signed_in?
   end
+
   def user_moderator
-    if user_signed_in?
-      return current_user.moderator
-    end
+    return current_user.moderator if user_signed_in?
   end
 end
