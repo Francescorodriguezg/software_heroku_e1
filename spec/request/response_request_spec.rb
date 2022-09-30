@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 class ResponseControllerTest < ActiveSupport::TestCase
-  RSpec.describe "Response", type: :request do
+  RSpec.describe 'Response', type: :request do
     # aca van los tests
     describe 'index' do
       it 'should return a successful response' do

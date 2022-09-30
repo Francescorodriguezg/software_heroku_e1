@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :responses
   root 'publications#index'
-  
+
   devise_for :users
   resources :pivots
   resources :messages
