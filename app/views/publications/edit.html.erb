@@ -1,0 +1,24 @@
+<h1>Edit Publication</h1>
+
+<%= form_with scope: :publication, url: publication_path(@publication), local: false, method: :patch do |f| %>
+
+    <div>
+      <%= f.label :club_name %>
+      <%= f.text_field :club_name, :value => @publication.club_name %>
+    </div>
+
+    <div>
+      <%= f.label :club_address %>
+      <%= f.text_field :club_address %>
+    </div>
+
+    <div>
+      <%= f.label :sport_name %>
+      <%= f.text_field :sport_name %>
+    </div>
+
+    <div>
+      <%= f.submit %>
+    </div>
+
+<% end %>

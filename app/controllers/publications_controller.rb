@@ -20,7 +20,21 @@ class PublicationsController < ApplicationController
       render :new
     end
   end
+  def edit
+    @publication = Publication.find(params[:id])
+    render :edit
+  end
+  def update
+    @publication = Publication.find(params[:id])
+    @publication.update(publications_params)
+    redirect_to root_path
+  end
 
+  def destroy
+    @publication = Publication.find(params[:id])
+    @publication.destroy
+    redirect_to root_path
+  end
   private
 
   def publications_params

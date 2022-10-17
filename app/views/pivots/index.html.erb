@@ -26,6 +26,7 @@
       <td><%= pivot.sport_name%></td>
       <td><%= pivot.status%></td>
       <td><%= link_to 'Editar Status', edit_pivot_path(pivot)%></td>
+      <td><%= link_to 'Eliminar', pivot_path(pivot), method: :delete %></td> 
       <td><%= link_to 'Enviar Mensaje', new_response_path(:user_id => pivot.user_id, :user_moderator => pivot.moderador_id)  %></td>
       </tr>
       </div> 

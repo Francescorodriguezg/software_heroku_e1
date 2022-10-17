@@ -27,6 +27,9 @@
   <td><%= publication.club_name %></td>
   <td><%= publication.club_address %></td>
   <td><%= publication.sport_name %></td>
+  <td><%= link_to 'Editar', edit_publication_path(publication)  %></td> 
+  <td><%= link_to 'Eliminar', publication_path(publication), method: :delete %></td> 
+
   <% if user_admin == false && user_moderator == false%>
     <td><%= link_to 'reservar', create_pivot_path(:club_name => publication.club_name, :club_address => publication.club_address, :sport_name => publication.sport_name)  %></td>
     
